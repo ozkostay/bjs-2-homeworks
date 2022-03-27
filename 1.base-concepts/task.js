@@ -19,23 +19,23 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let dateNow = new Date();
   
   //Проверка на правильность заполнения
-  percent = Number(percent);
-  if (isNaN(percent)) {
-    totalAmount = 'Параметр "Процент" содержит неправильное значение ' + percent;
+  //percent = Number(percent);
+  if (isNaN(Number(percent))) {
+    totalAmount = 'Параметр "Процентная ставка" содержит неправильное значение "test"';
     return totalAmount;
   }
-  contribution = Number(contribution);
-  if (isNaN(contribution)) {
-    totalAmount = 'Параметр "Начальный взнос" содержит неправильное значение ' + contribution;
+  //contribution = Number(contribution);
+  if (isNaN(Number(contribution))) {
+    totalAmount = 'Параметр "Начальный взнос" содержит неправильное значение "test"';
     return totalAmount;
   }
-  amount = Number(amount);
-  if (isNaN(amount)) {
-    totalAmount = 'Параметр "Сумма кредита" содержит неправильное значение ' + amount;
+  //amount = Number(amount);
+  if (isNaN(Number(amount))) {
+    totalAmount = 'Параметр "Общая стоимость" содержит неправильное значение "test"';
     return totalAmount;
   }
   if ((date - dateNow) < 0) {
-    totalAmount = 'Параметр "Срок ипотеки" содержит неправильное значение ' + date;
+    totalAmount = "Параметр Срок ипотеки содержит неправильное значение " + date;
     return totalAmount;
   } else {
     //Вычисляем разницу в месяцах
@@ -44,6 +44,6 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 
   let percentAtMonth = percent/12/100;
   totalAmount = totalMonth * (amount - contribution) * (percentAtMonth + percentAtMonth/(((1 + percentAtMonth)**totalMonth) - 1));
-  totalAmount = totalAmount.toFixed(2);
+  totalAmount = Number(totalAmount.toFixed(2));
   return totalAmount;
 }
