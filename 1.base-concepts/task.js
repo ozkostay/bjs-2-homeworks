@@ -15,8 +15,35 @@ function solveEquation(a, b, c) {
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount;
+  let totalMonth;
+  let dateNow = new Date();
+  
+  //Проверка на правильность заполнения
+  percent = Number(percent);
+  if (isNaN(percent)) {
+    totalAmount = 'Параметр "Процент" содержит неправильное значение ' + percent;
+    return totalAmount;
+  }
+  contribution = Number(contribution);
+  if (isNaN(contribution)) {
+    totalAmount = 'Параметр "Начальный взнос" содержит неправильное значение ' + contribution;
+    return totalAmount;
+  }
+  amount = Number(amount);
+  if (isNaN(amount)) {
+    totalAmount = 'Параметр "Сумма кредита" содержит неправильное значение ' + amount;
+    return totalAmount;
+  }
+  if ((date - dateNow) < 0) {
+    totalAmount = 'Параметр "Срок ипотеки" содержит неправильное значение ' + date;
+    return totalAmount;
+  } else {
+    //Вычисляем разницу в месяцах
+    totalMonth = (date.getFullYear() - dateNow.getFullYear())*12 + (date.getMonth() - dateNow.getMonth());
+  }
 
-  // код для задачи №2 писать здесь
-
+  let percentAtMonth = percent/12/100;
+  totalAmount = totalMonth * (amount - contribution) * (percentAtMonth + percentAtMonth/(((1 + percentAtMonth)**totalMonth) - 1));
+  totalAmount = totalAmount.toFixed(2);
   return totalAmount;
 }

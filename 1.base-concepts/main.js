@@ -1,3 +1,4 @@
+
 function calculateQuadraticEquation(){
     let a = +window.a.value;
     let b = +window.b.value;
