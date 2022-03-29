@@ -17,19 +17,22 @@ function getArrayParams(arr) {
 
 // Задание 2
 function worker(arr) {
-  let sum;
-
-  // Ваш код
-
+  let sum = 0;
+  for ( let i = 0; i < arr.length; i++) {
+    sum = sum + arr[i]; 
+  }
   return sum;
 }
 
 function makeWork(arrOfArr, func) {
-  let max;
-
-  // Ваш кода
-  // for ...
-  
+  let max = -Infinity;
+  let workertemp;
+  for ( let i = 0; i < arrOfArr.length; i++) {
+    workertemp = func(arrOfArr[i]);
+    if (max < workertemp) {
+      max = workertemp;
+    }
+  }
   return max;
 }
 
