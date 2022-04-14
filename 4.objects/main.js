@@ -3,7 +3,7 @@ student1.setSubject("Algebra");
 student1.addMark(5);
 student1.addMark(4);
 student1.addMark(5);
-student1.addMarks(3,3,4);
+student1.addMarks(3,5,4);
 
 let student2 = new Student("Buzz", "female", 35);
 student2.setSubject("Geometry");

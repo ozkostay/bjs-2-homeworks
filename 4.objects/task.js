@@ -20,7 +20,9 @@ Student.prototype.addMarks = function (...mark) {
   if (this.marks === undefined) {
     this.marks = [];
   } else {
-    mark.every((nextmark,index) => this.marks.push(mark[index]));
+    for (i of mark) {
+      this.marks.push(i);
+    }
   }
 }
 
