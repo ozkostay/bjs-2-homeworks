@@ -21,8 +21,6 @@ Student.prototype.addMarks = function (...mark) {
     this.marks = [];
   } else {
     mark.every((nextmark,index) => this.marks.push(mark[index]));
-    
-    //this.marks.push(mark);
   }
 }
 
@@ -31,4 +29,11 @@ Student.prototype.exclude = function (reason) {
   delete this.subject;
   this.excluded = reason;
 }
-// ваш код для остальных методов
+
+Student.prototype.getAverage = function () {
+  let sum = 0;
+  for (i in this.marks) {
+    sum += this.marks[i]
+  }
+  return sum / this.marks.length ;
+}
