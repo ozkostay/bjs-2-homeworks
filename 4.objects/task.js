@@ -19,11 +19,10 @@ Student.prototype.addMark = function (mark) {
 Student.prototype.addMarks = function (...mark) {
   if (this.marks === undefined) {
     this.marks = [];
-  } else {
-    for (i of mark) {
+  } 
+  for (i of mark) {
       this.marks.push(i);
-    }
-  }
+   }
 }
 
 Student.prototype.exclude = function (reason) {

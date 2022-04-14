@@ -3,7 +3,6 @@ student1.setSubject("Algebra");
 student1.addMark(5);
 student1.addMark(4);
 student1.addMark(5);
-student1.addMarks(3,5,4);
 
 let student2 = new Student("Buzz", "female", 35);
 student2.setSubject("Geometry");
@@ -15,6 +14,3 @@ student2.exclude('low grades');
 console.log(student1);
 console.log(student2);
 
-console.log(student1);
-//student1.getAverage();
-console.log(student1.getAverage());
