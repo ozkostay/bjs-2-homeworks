@@ -12,8 +12,8 @@ console.log("main fix2 ============================================== 333");
 sherlock.fix();
 console.log("www " + sherlock.state); //100
 
-const book1 = new Book("dedede")
-console.log(book1);
+//const book1 = new Book("dedede")
+//console.log(book1);
 console.log(" STOP");
 
 console.log(picknick.author); //"Аркадий и Борис Стругацкие"
@@ -32,7 +32,7 @@ library.addBook(new Magazine("Мурзилка", 1924, 60));
 
 console.log(library.findBookBy("name", "Машина времени")); //
 console.log(library.findBookBy("name", "Властелин колец")); //null
-console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
+//console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
 
 console.log("Количество книг до выдачи: " + library.books.length); //Количество книг до выдачи: 4
 library.giveBookByName("Машина времени");

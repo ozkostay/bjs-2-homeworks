@@ -83,6 +83,7 @@ describe('Домашнее задание к лекции 5 «Классы»', (
     });   
     
     it('добавление книги', () => {
+      console.log(printItem);
       library.addBook(printItem);
       expect(library.books[0].name).toEqual('Типовой школьный журнал');
       expect(library.books.length).toEqual(1);

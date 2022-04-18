@@ -65,15 +65,18 @@ class DetectiveBook extends Book {
 
 class Library {
     constructor(name,books) {
-        this.name = "";
+        this.name = name;
         this.books = [];
     }
 
     addBook(book) {
-        console.log("add ==========")
-        if (this.books.state > 30) {
+        console.log("add ==========");
+        console.log(book.state);
+        if (book.state > 30) {
             this.books.push(book);
         }
+        console.log(this.books);
+        console.log("add end ==========");
     }
 
     findBookBy(type,value) {
@@ -86,11 +89,19 @@ class Library {
     }
 
     giveBookByName(bookName) {
+        let tempbook;
         for (let i in this.books) {
             if (this.books[i].name === bookName) {
+                console.log("Выдача ============");
+                console.log(tempbook);
+                tempbook = this.books[i];
                 this.books.splice(i, 1); 
-                return this.books[i];
+                console.log(tempbook);
+                console.log("Выдача ");
+                return tempbook;
             }
         }
+        console.log("nulllllllllllllllllllllllll");
+        return null;
     }
 }
