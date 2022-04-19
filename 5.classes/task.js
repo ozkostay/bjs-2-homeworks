@@ -70,13 +70,9 @@ class Library {
     }
 
     addBook(book) {
-        console.log("add ==========");
-        console.log(book.state);
         if (book.state > 30) {
             this.books.push(book);
         }
-        console.log(this.books);
-        console.log("add end ==========");
     }
 
     findBookBy(type,value) {
@@ -92,16 +88,63 @@ class Library {
         let tempbook;
         for (let i in this.books) {
             if (this.books[i].name === bookName) {
-                console.log("Выдача ============");
-                console.log(tempbook);
                 tempbook = this.books[i];
                 this.books.splice(i, 1); 
-                console.log(tempbook);
-                console.log("Выдача ");
                 return tempbook;
             }
         }
-        console.log("nulllllllllllllllllllllllll");
         return null;
     }
 }
+
+//=== Student ================================================
+class Student {
+    constructor (name, gender, age) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.marks = [];
+    }
+    
+    addMark (mark, subject) {
+        if (mark < 1 || mark > 5) {
+            console.log("Ошибка, оценка должна быть числом от 1 до 5");
+        } else {
+            this.marks.push([mark,subject]);
+        }
+    }
+
+    getAverageBySubject(subject) {
+        let sumMarks = 0;
+        let countMarks = 0;
+        for (let i in this.marks) {
+            if (this.marks[i][1]===subject) {
+                sumMarks += this.marks[i][0];
+                countMarks ++ ;
+            }
+        }
+        if (countMarks===0) {
+            console.log("Несуществующий предмет");
+            return null;
+        } else {
+            console.log("Средний балл по предмету " + subject + " " + (sumMarks / countMarks));
+            return sumMarks / countMarks;
+        }
+    }
+
+    getAverage() {
+        let sumMarks = 0;
+        for (let i in this.marks) {
+            sumMarks += this.marks[i][0];
+        }
+        console.log("Средний балл по всем предметам " + (sumMarks / this.marks.length));
+        return sumMarks / this.marks.length;
+    }
+
+    exclude(reason) {
+        delete this.marks;
+        this.excluded = reason;
+    }
+}
+
+
