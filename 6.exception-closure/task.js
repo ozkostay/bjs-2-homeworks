@@ -43,10 +43,10 @@ function getTriangle(sideA,sideB,sideC) {
         return new Triangle(sideA,sideB,sideC);
     }
     catch {
-        const objForRiturn= {
+        const objForReturn= {
             getPerimeter: () => "Ошибка! Треугольник не существует",
             getArea: () => "Ошибка! Треугольник не существует",
         }
-        return objForRiturn;
+        return objForReturn;
     }
 }
