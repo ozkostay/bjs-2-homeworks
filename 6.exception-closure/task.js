@@ -1,12 +1,13 @@
 //================= Задача 1 ===================
 function parseCount(value) {
     let persresult = parseInt(value);
-    if (!persresult) throw new Error("Невалидное значение");
+    if (!persresult) {
+        throw new Error("Невалидное значение");
+    }
     return persresult;
 }
 
 function validateCount(value) {
-    let aaa;
     try {
         return parseCount(value); 
     }
@@ -20,10 +21,7 @@ function validateCount(value) {
 class Triangle {
     constructor(sideA,sideB,sideC) {
         if ((sideA + sideB) <= sideC || (sideA + sideC) <= sideB || (sideB + sideC) <= sideA){
-            console.log("ошибка");
             throw new Error("Треугольник с такими сторонами не существует");
-        } else {
-            console.log("норм");
         }
         this.sideA = sideA;
         this.sideB = sideB;
@@ -43,10 +41,10 @@ function getTriangle(sideA,sideB,sideC) {
         return new Triangle(sideA,sideB,sideC);
     }
     catch {
-        const objForReturn= {
+        return {
             getPerimeter: () => "Ошибка! Треугольник не существует",
             getArea: () => "Ошибка! Треугольник не существует",
         }
-        return objForReturn;
+        
     }
 }
