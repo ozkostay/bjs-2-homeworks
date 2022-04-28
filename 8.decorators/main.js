@@ -43,3 +43,32 @@ const mult = (a,b,c) => a * b *c;
 const upgradedMult = decorator(mult);
 let res2 = upgradedMult(2,3,5);
 console.log(res2);
+
+console.log('=== 10 =====================');
+
+const arr1 = [12,'23','34',45];
+console.log(arr1);
+const [n1, n2, n3, n4] = arr1;
+console.log(n1);
+console.log(n2);
+console.log(n3);
+console.log(n4);
+
+const obj2 = {ac1: 312, ac2: '323', ac3: '334', ac4: 345};
+console.log(obj2);
+//const {ac1, ...aaa} = obj2;
+const {...aaa} = obj2;
+//console.log(ac1);
+obj2.ac1 =333;
+console.log(obj2);
+console.log(aaa);
+// console.log(ac3);
+// console.log(ac4);
+console.log('1========== 33');
+
+function getAge({...aaa}) {
+    console.log(aaa);
+    console.log(aaa.age);
+}
+let user1 = {age: 18};
+getAge(user1);

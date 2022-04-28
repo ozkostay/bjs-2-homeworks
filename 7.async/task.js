@@ -8,63 +8,44 @@ class AlarmClock {
         if ( !id ) {
            throw new Error('id не был передан как параметр');
         }
-        if ( !this.alarmCollection.every( (arr) => {
-                if ( arr.id === id ) {
-                    return false;
-                }
-                return true;
-            })
-        ) {
+        
+        if (this.alarmCollection.some( (element) => element.id === id)) {
             console.error('id = ' + id + ' уже существует!!!');
-            return;
+        } else {
+            this.alarmCollection.push( {time, callback, id} );    
         }
-        this.alarmCollection.push(
-            {
-                time: time,
-                callback: callback,
-                id: id,
-            }
-        );
     }
 
     removeClock(id) {
         let index;
-        this.alarmCollection.every( (arr, idx) => {
-            if ( arr.id === id ) {
-                index = idx;
-                return false;
-            }
-            return true;
-        });
+        index = this.alarmCollection.findIndex(element => element.id === id);
         
         if (index !== null) {
+            console.log('Удаляем будильник: ',id);
             this.alarmCollection.splice(index,1);
-        }
-
-        if ( this.alarmCollection.length === 0 ) {
-            this.timerId = null;
+            return true;
+        } else {
+            return false;
         }
     }
 
     getCurrentFormattedTime() {
-        let date = new Date('December 25, 1995 09:02:30');
-        //let date = new Date();
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        hours = hours > 9 ? hours : "0" + hours;
-        minutes = minutes > 9 ? minutes : "0" + minutes;
-        return hours + ':' + minutes;
+        let date = new Date().toLocaleTimeString("ru-Ru", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+        return date;
     }
 
     start() {
         const checkClock = () => {
             let timeNow = this.getCurrentFormattedTime();
             console.log('Сейчас' + timeNow);
-            
-            this.alarmCollection.every( (arr) => {
-                console.log('время будильника: ' + arr.time);
-                if ( timeNow === arr.time ) {
-                    arr.callback();
+ 
+            this.alarmCollection.forEach( (element) => {
+                console.log('время будильника: ' + element.time);
+                if ( timeNow === element.time ) {
+                    element.callback();
                     return false;
                 }
                 return true;
@@ -88,12 +69,11 @@ class AlarmClock {
                 console.log('Будильник №' + element.id + ' заведен на ' + element.time);
             });
         }
-        
     }
 
     clearAlarms() {
         this.stop();
-        this.alarmCollection.length = 0;
-        this.timerId = undefined;
+        this.alarmCollection = [];
+        this.timerId = null;
     }
 }
