@@ -17,10 +17,10 @@ class AlarmClock {
     }
 
     removeClock(id) {
-        let index;
-        index = this.alarmCollection.findIndex(element => element.id === id);
+        let index = this.alarmCollection.findIndex(element => element.id === id);
         
-        if (index !== null) {
+
+        if (index !== -1) {
             console.log('Удаляем будильник: ',id);
             this.alarmCollection.splice(index,1);
             return true;
@@ -30,11 +30,10 @@ class AlarmClock {
     }
 
     getCurrentFormattedTime() {
-        let date = new Date().toLocaleTimeString("ru-Ru", {
-            hour: "2-digit",
-            minute: "2-digit",
-          });
-        return date;
+        return new Date().toLocaleTimeString("ru-Ru", {
+                 hour: "2-digit",
+                 minute: "2-digit",
+               });
     }
 
     start() {
@@ -46,9 +45,7 @@ class AlarmClock {
                 console.log('время будильника: ' + element.time);
                 if ( timeNow === element.time ) {
                     element.callback();
-                    return false;
                 }
-                return true;
             });
         };
 
